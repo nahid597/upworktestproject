@@ -25,6 +25,11 @@ export class PostdataService {
      
   }
 
+  getSingleData(id: string)
+  {
+    return this.http.get<{_id:string, FirstName: string, LastName: string, EmailName: string, RoleName: string}>('http://localhost:3000/api/posts/' +id);
+  }
+
   postData(post: Post[])
   {
       console.log(post);
@@ -32,6 +37,36 @@ export class PostdataService {
       .subscribe((data) => {
         console.log(data.message);
       });
+  }
+
+  updateData(id: string, post: Post)
+  {
+     console.log(id);
+     const postData = {
+        FirstName: post.FirstName,
+        LastName: post.LastName,
+        EmailName: post.EmailName,
+        RoleName: post.RoleName
+     }
+     
+     this.http.put<{message: string, post: Post[]}>('http://localhost:3000/api/posts/' +id, post)
+      .subscribe((data) => {
+        const updatePost = [...this.posts];
+        const oldPostId = updatePost.findIndex(p => p._id === post._id);
+        updatePost[oldPostId] = post;
+        this.postUpdated.next([...this.posts]);
+      });
+  }
+
+  delteData(id: string)
+  {
+     console.log(id);
+    this.http.delete('http://localhost:3000/api/posts/' +id ,{ responseType: 'text'})
+    .subscribe(() => {
+        const updatedPosts = this.posts.filter(post => post._id !== id);
+        this.posts = updatedPosts;
+        this.postUpdated.next([...this.posts]);
+    })
   }
 
   getPostsUpdateListener()

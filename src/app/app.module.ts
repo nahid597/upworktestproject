@@ -11,13 +11,15 @@ import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostdataService } from './postdata.service';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreatePostComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { PostdataService } from './postdata.service';
     HttpClientModule,
     RouterModule.forRoot([
       {path:'', component: HomeComponent},
-      {path: 'addnewitem', component:CreatePostComponent}
+      {path: 'addnewitem', component:CreatePostComponent},
+      {path: 'edit/:postId', component: EditPostComponent}
     ]),
 
     

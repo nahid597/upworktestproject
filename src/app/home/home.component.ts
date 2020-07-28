@@ -14,13 +14,18 @@ export class HomeComponent implements OnInit {
 
   constructor(private postService: PostdataService) { }
 
+  deleteItem(id: string)
+  {
+     this.postService.delteData(id);
+  } 
+
   ngOnInit() {
     this.postService.getpost()
     this.postService.getPostsUpdateListener()
     .subscribe((post: Post[]) => {
       this.posts = post;
     });
-    
+
   }
 
   
