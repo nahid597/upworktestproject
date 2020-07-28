@@ -1,0 +1,12 @@
+#navbar {
+    background-color: skyblue;
+    color: skyblue;
+}
+
+.navbar-brand {
+    color: rgb(0, 102, 255);
+}
+
+.navbar-brand:hover {
+    color: rgb(0, 255, 242);
+}

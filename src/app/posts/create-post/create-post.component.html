@@ -1,0 +1,32 @@
+<div class="container">
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+        <div ngModelGroup="contact">
+            <div class="form-group">
+                <label for="FirstName"> <b>First Name</b> </label>
+                <input required ngModel name="FirstName" #FirstName="ngModel" (change)="log(FirstName)" type="text" placeholder="Enter First Name" class="form-control" id="FirstName" aria-describedby="firstName">
+                <p class="alert alert-danger" *ngIf="FirstName.touched && !FirstName.valid">First Name required</p>
+            </div>
+            <div class="form-group">
+                <label for="Last Name"><b>Last Name</b> </label>
+                <input required ngModel name="LastName" #LastName="ngModel" type="text" placeholder="Enter Last Name" class="form-control" id="Last Name" aria-describedby="LastName">
+                <p class="alert alert-danger" *ngIf="LastName.touched && !LastName.valid">Last Name required</p>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1"><b>Email address</b> </label>
+                <input required ngModel name="EmailName" #EmailName="ngModel" type="email" placeholder="Enter your Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <p class="alert alert-danger" *ngIf="EmailName.touched && !EmailName.valid">Email Name required</p>
+            </div>
+            <div class="form-group">
+                <label for="RoleFormControlSelect1"> <b>Role select</b> </label>
+                <select ngModel name="RoleName" #RoleName="ngModel" class="form-control" id="RoleFormControlSelect1">
+                    <option>Artist</option>
+                  <option>Designer</option>
+                  <option>Art Manager</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add</button>
+    </form>
+</div>
