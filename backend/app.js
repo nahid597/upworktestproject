@@ -12,7 +12,7 @@ app.use(cors());
 //mongodb+srv://nahid597:yi4sd5ZzhZtqIn4u@cluster0.bowyc.mongodb.net/test?retryWrites=true&w=majority
 
 //connect with mongodb
-mongoose.connect('mongodb://localhost/post-data', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://nahid597:nahid123@ds253368.mlab.com:53368/upworktest', { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => {
         console.log(err);
     }).then(() => {
