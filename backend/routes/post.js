@@ -41,14 +41,15 @@ router.post('', (req, res) => {
         RoleName: req.body.RoleName
     });
 
-    //console.log(post);
-
-    post.save();
-
-    res.status(200).json({
-        message: "post data successfully",
-        post: post
+    post.save().then((response) => {
+        res.status(200).json({
+            message: "post data successfully",
+            post: response
+        });
+    }).catch((err) => {
+        console.log(err);
     });
+
 });
 
 router.put('/:id', (req, res) => {
