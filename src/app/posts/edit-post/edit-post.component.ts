@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Post } from '../post.model';
 import { PostdataService } from 'src/app/postdata.service';
-import { create } from 'domain';
 import { NgForm } from '@angular/forms';
 
 @Component({

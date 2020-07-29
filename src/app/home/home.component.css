@@ -1,6 +1,9 @@
 #addnewitem {
     float: right;
-    margin: 10px;
+}
+
+.row {
+    margin: 6px;
 }
 
 #editbutton {
