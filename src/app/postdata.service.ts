@@ -15,7 +15,7 @@ export class PostdataService {
 
   getpost()
   {
-     this.http.get<{post:Post[]}>('api/posts')
+     this.http.get<{post:Post[]}>('http://localhost:3000/api/posts')
      .subscribe((data) => {
        console.log(data);
        this.posts = data.post;
@@ -27,13 +27,13 @@ export class PostdataService {
 
   getSingleData(id: string)
   {
-    return this.http.get<{_id:string, FirstName: string, LastName: string, EmailName: string, RoleName: string}>('api/posts/' +id);
+    return this.http.get<{_id:string, FirstName: string, LastName: string, EmailName: string, RoleName: string}>('http://localhost:3000/api/posts/' +id);
   }
 
   postData(post: Post[])
   {
       console.log(post);
-      this.http.post<{message: string, post: Post[]}>('api/posts', post)
+      this.http.post<{message: string, post: Post[]}>('http://localhost:3000/api/posts', post)
       .subscribe((data) => {
         console.log(data.message);
       });
@@ -49,7 +49,7 @@ export class PostdataService {
         RoleName: post.RoleName
      }
      
-     this.http.put<{message: string, post: Post[]}>('api/posts/' +id, post)
+     this.http.put<{message: string, post: Post[]}>('http://localhost:3000/api/posts/' +id, post)
       .subscribe((data) => {
         const updatePost = [...this.posts];
         const oldPostId = updatePost.findIndex(p => p._id === post._id);
@@ -61,7 +61,7 @@ export class PostdataService {
   delteData(id: string)
   {
      console.log(id);
-    this.http.delete('api/posts/' +id ,{ responseType: 'text'})
+    this.http.delete('http://localhost:3000/api/posts/' +id ,{ responseType: 'text'})
     .subscribe(() => {
         const updatedPosts = this.posts.filter(post => post._id !== id);
         this.posts = updatedPosts;
