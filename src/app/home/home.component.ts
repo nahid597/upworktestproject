@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
     this.postService.getPostsUpdateListener()
     .subscribe((post: Post[]) => {
       this.filterPost = this.posts = post;
+      this.copyPost = this.filterPost;
     });
   }
 
