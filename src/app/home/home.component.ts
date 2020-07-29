@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
 
   posts: Post[] = [];
   filterPost: Post[] = [];
+  copyPost: Post[] = [];
+  checkSearchOption: boolean;
 
   constructor(private postService: PostdataService) { }
 
@@ -23,8 +25,26 @@ export class HomeComponent implements OnInit {
   filter(query: string)
   {
       this.filterPost = (query) ?
-      this.posts.filter((l)=> l.LastName.toLowerCase().includes(query.toLowerCase()) || l.FirstName.toLowerCase().includes(query.toLowerCase())):
-      this.posts;
+      this.copyPost.filter((data)=> data.EmailName.toLowerCase().includes(query.toLowerCase())):
+      this.copyPost;
+  }
+
+  filterSelect(selectData: string)
+  {
+     if(selectData == "All")
+     {
+       this.filterPost=this.posts;
+       this.copyPost = this.filterPost;
+     }
+     else
+     {
+        this.filterPost = (selectData) ?
+        this.posts.filter((data) => data.RoleName.toLowerCase().includes(selectData.toLowerCase())):
+        this.posts;
+        this.copyPost = this.filterPost;
+     }
+
+     
   }
 
   ngOnInit() {
@@ -33,7 +53,6 @@ export class HomeComponent implements OnInit {
     .subscribe((post: Post[]) => {
       this.filterPost = this.posts = post;
     });
-
   }
 
   

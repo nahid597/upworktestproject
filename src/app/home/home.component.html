@@ -1,10 +1,25 @@
 <div class="container">
     <div>
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <b style="margin-top:30%;">Role</b>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <select ngModel name="RoleName" #RoleName="ngModel" (click)="filterSelect(RoleName.value)" class="form-control" id="RoleFormControlSelect1">
+                                <option>All</option>
+                                <option>Artist</option>
+                                <option>Designer</option>
+                                <option>Art Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="search data">
             </div>
             <div class="col-sm-3">
